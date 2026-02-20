@@ -3,490 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アトムクリニック 対談収録台本 v2</title>
+    <title>【実録】「お母さん」から「一人の女性」へ戻れた私の話</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@400;700;900&family=Shippori+Mincho:wght@400;700&display=swap');
+        
+        :root {
+            --bg-feminine: #fff9f9;
+            --rose-accent: #e2b4b4;
+            --gold-soft: #d9c5a0;
+            --text-charcoal: #4a4444;
+            --medical-light-blue: #eef4f8;
+        }
+
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: #f3f4f6;
+            color: var(--text-charcoal);
+            background-color: var(--bg-feminine);
+            line-height: 1.9;
         }
-        .dialogue-box {
+
+        .serif { font-family: 'Shippori Mincho', serif; }
+        .serif-heavy { font-family: 'Noto Serif JP', serif; font-weight: 900; }
+
+        .article-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 50px rgba(226, 180, 180, 0.15);
+        }
+
+        /* 装飾的な見出し */
+        .deco-title {
             position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
         }
-        /* 田中さん（左） */
-        .speaker-tanaka .bubble {
-            background-color: #ffffff;
-            border-left: 4px solid #1e3a8a; /* ネイビー */
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .speaker-tanaka .name {
-            color: #1e3a8a;
-        }
-        
-        /* 山口先生（右） */
-        .speaker-yamaguchi {
-            display: flex;
-            justify-content: flex-end;
-        }
-        .speaker-yamaguchi .content-wrapper {
-            align-items: flex-end;
-            display: flex;
-            flex-direction: column;
-        }
-        .speaker-yamaguchi .bubble {
-            background-color: #eff6ff; /* 薄い青 */
-            border-right: 4px solid #059669; /* グリーン */
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            text-align: left;
-        }
-        .speaker-yamaguchi .name {
-            color: #059669;
-            text-align: right;
-            width: 100%;
+        .deco-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--rose-accent);
         }
 
-        /* テロップ指示 */
-        .telop-box {
-            background-color: #fffbeb;
-            border: 2px dashed #f59e0b;
-            color: #92400e;
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 吹き出し */
+        .bubble-left {
+            position: relative;
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin-left: 20px;
+        }
+
+        /* マーカーアニメーション */
+        .marker-rose {
+            background: linear-gradient(transparent 60%, #ffe4e4 60%);
             font-weight: bold;
-            text-align: center;
-            padding: 0.5rem;
-            margin: 1rem 0;
-            border-radius: 0.5rem;
         }
 
-        /* 踏み込みゾーン */
-        .deep-dive-box {
-            background-color: #f0fdf4;
-            border: 1px solid #86efac;
-            color: #166534;
-            padding: 0.75rem;
-            margin: 0.5rem 0 0 0; /* 上マージン調整 */
-            border-radius: 0.5rem;
-            font-size: 0.9rem;
+        /* LINEボタンの鼓動 */
+        .btn-pulse {
+            animation: pulse-animation 2s infinite;
         }
-        
-        @media print {
-            body { background-color: white; }
-            .no-print { display: none; }
+        @keyframes pulse-animation {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(6, 199, 85, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(6, 199, 85, 0); }
+        }
+
+        .img-soft-shadow {
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            border-radius: 30px 5px 30px 5px;
+        }
+
+        .bg-lace {
+            background-image: radial-gradient(#f7e8e8 1px, transparent 1px);
+            background-size: 20px 20px;
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased pb-20">
+<body>
 
-    <!-- ヘッダー -->
-    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <div class="max-w-3xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-bold text-gray-900">対談インタビュー収録台本</h1>
-                <p class="text-sm text-gray-500">2月22日(土) 14:00〜16:00 @新宿スタジオ</p>
-            </div>
-            <div class="text-right text-xs text-gray-400 hidden sm:block">
-                山口先生 × 田中大貴 氏
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-3xl mx-auto px-4 py-8 space-y-12">
-
-        <!-- 注意書き -->
-        <div class="bg-gray-100 border-l-4 border-gray-500 p-4 rounded text-sm text-gray-600 mb-8">
-            <p class="font-bold mb-1">【進行上の注意】</p>
-            <p>※本資料は進行イメージです。一字一句読む必要はありません。<br>
-            ※実際の言葉選びは、その場の雰囲気とご自身の言葉を優先してください。</p>
+    <div class="article-container min-h-screen">
+        <!-- 1. Header -->
+        <div class="py-4 text-center border-b border-rose-50 tracking-widest text-[10px] text-rose-300">
+            WOMAN'S BEAUTY JOURNAL | SPECIAL COLUMN
         </div>
 
-        <!-- オープニング -->
-        <section>
-            <h2 class="text-lg font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-6">【導入】オープニング</h2>
+        <!-- 2. Hero Section -->
+        <section class="relative">
+            <div class="px-6 pt-12 pb-8 text-center bg-white">
+                <span class="text-xs text-rose-400 font-bold tracking-tighter mb-4 block">いつまでも、「綺麗な私」でいたい奥様へ</span>
+                <h1 class="serif-heavy text-2xl md:text-3xl leading-snug mb-8">
+                    たった15分の施術で、<br>
+                    <span class="text-rose-400">もう一度あの人の目</span>を<br>引きつけたいあなたへ
+                </h1>
+            </div>
             
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    本日は、男性特有のお悩みについて、数多くの治療実績をお持ちのアトムクリニック、山口先生にお話を伺います。先生、よろしくお願いします。
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        よろしくお願いします。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    今日はズバリ、多くの男性が密かに悩んでいる「ED（勃起不全）」や「早漏」、そして「薄毛（AGA）」について、最新の治療法を根掘り葉掘り聞いていきたいと思います！
-                </div>
-            </div>
-        </section>
-
-        <!-- テーマ1 -->
-        <section>
-            <h2 class="text-lg font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-6">【テーマ1】ED治療：根本治療 (Pストロング)</h2>
-            
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    まずはED治療についてです。一般的には「薬を飲む」イメージが強いですが、先生のところでは少し違うアプローチをされていると聞きました。
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        はい。飲み薬のような対処療法だけでなく、「Pストロング注射」という<strong>根本治療</strong>を行っています。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    （驚き）「根本治療」ですか？ 薬とは何が違うんですか？
-                </div>
-                <div class="telop-box">テロップ：「薬とは何が違う？」</div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        飲み薬は一時的な血流改善ですが、Pストロングは<strong>血管や神経そのものを再生・修復させる治療</strong>です。<br>
-                        ご自身の組織を修復するので、自然な勃起力が戻ってくるのが特徴です。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    なるほど！ 一時的に元気にするんじゃなくて、「若い頃の状態に戻していく」というイメージでしょうか？
-                </div>
-                <div class="telop-box">テロップ：「若い頃の状態に戻す！？」</div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        その通りです。また、（麻酔等により）ほとんど痛みを感じない方が多いですよ。
+            <div class="px-4">
+                <div class="relative group">
+                    <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80&w=1000" alt="Room Atmosphere" class="w-full h-[450px] object-cover img-soft-shadow">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8 text-white">
+                        <div class="bg-white/20 backdrop-blur-md p-4 rounded-lg border border-white/30 inline-block mb-4">
+                            <p class="text-sm font-bold">「スルリムやばい」は嘘？</p>
+                            <p class="text-[10px] opacity-90">何をしても痩せなかった私が徹底解説！！</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- テーマ2 -->
-        <section>
-            <h2 class="text-lg font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-6">【テーマ2】コンディション管理 (デイリータダラフィル)</h2>
-            
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    ED治療薬って、「必要な時だけ飲むもの」「その場しのぎ」という印象がありました。
+        <!-- 3. Introduction / Empathy -->
+        <section class="px-8 py-16 space-y-12">
+            <div class="scroll-reveal text-center">
+                <p class="serif text-xl font-bold mb-4 tracking-tighter leading-relaxed">
+                    検索するだけの夜を、<br>今夜で終わりにしませんか？
+                </p>
+                <div class="w-8 h-px bg-rose-200 mx-auto mb-6"></div>
+                <p class="text-sm text-gray-400 italic">「これ以上、何をしたらいいのかわからない」</p>
+            </div>
+
+            <div class="scroll-reveal">
+                <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&q=80&w=800" alt="Tired Woman" class="w-full h-64 object-cover rounded-2xl mb-8">
+                <div class="space-y-6 text-gray-600">
+                    <p>もしあなたが今、このような思いがあるのなら、ぜひ数分私のお話を聞いてくれないでしょうか。</p>
+                    <p>私は、糖質制限に16時間断食、ジムに通い、SNSでバズった宅トレを毎日こなし......。</p>
+                    <p><span class="marker-rose">世の中にある「痩せる」と言われる方法は、だいたいしました。</span></p>
                 </div>
             </div>
 
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        そういうイメージの方が多いですが、最近は<strong>毎日少量で「調子を整える」</strong>という考え方もあります。
+            <div class="scroll-reveal bg-rose-50/50 p-8 rounded-[40px] border border-rose-100">
+                <p class="serif text-lg text-rose-900 leading-relaxed mb-6">
+                    「私の努力が足りないの？」<br>
+                    「体質のせい？ それとも、もう一生このまま？」
+                </p>
+                <p class="text-sm text-gray-500">
+                    新しいダイエットを始める時、旦那に報告しても「またかよ」という顔。「いつ痩せるんだよ」という一言が、胸に刺さっていました。
+                </p>
+            </div>
+
+            <div class="scroll-reveal text-center py-10">
+                <p class="text-red-500 font-bold mb-2">――衝撃の瞬間は突然に。</p>
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800" alt="Surprised Face" class="w-32 h-32 object-cover rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
+                <p class="serif text-2xl text-rose-500 font-bold leading-relaxed mb-4">
+                    「なんか...綺麗になった？」
+                </p>
+                <p class="text-sm text-gray-600">
+                    ある日、横を通り過ぎる時に二度見した旦那が放った言葉。その一言で、今までの惨めな気持ちが吹き飛びました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. Points Checklist -->
+        <section class="bg-lace py-16 px-8">
+            <div class="bg-white rounded-3xl p-8 shadow-sm border border-rose-50 scroll-reveal">
+                <h3 class="serif text-center text-lg font-bold mb-8 deco-title">この記事を見てわかること</h3>
+                <ul class="space-y-6">
+                    <li class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=200" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                        <span class="text-sm font-bold">その施術「スルリム」の内容とは</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=200" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                        <span class="text-sm font-bold">実際に受けてきた本音の感想</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=200" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                        <span class="text-sm font-bold">痛み・腫れ・ダウンタイム</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. Content / Solution -->
+        <section class="px-8 py-20 bg-white">
+            <div class="scroll-reveal mb-12">
+                <h2 class="serif-heavy text-2xl text-center mb-10 deco-title">私の人生を変えた「スルリム」</h2>
+                <div class="space-y-6">
+                    <p>怪しいと思っていたその主成分は<span class="font-bold">「デオキシコール酸」</span>。難しい名前ですが、やっていることは<span class="marker-rose">「頑固な脂肪の膜を直接破壊する」</span>というシンプルなことでした。</p>
+                    <img src="https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=80&w=800" alt="Medical Science" class="w-full h-48 object-cover rounded-xl shadow-inner">
+                </div>
+            </div>
+
+            <div class="scroll-reveal bg-medical-light-blue p-8 rounded-[30px] space-y-4">
+                <p class="text-blue-900 font-bold">一回で35%の脂肪細胞を破壊！！</p>
+                <p class="text-sm leading-relaxed">ゴミ（脂肪）を片付けるだけでなく、<span class="font-bold">「ゴミ箱（脂肪細胞）ごと撤去する」</span>イメージ。だから、もうリバウンドに怯える必要がなくなるんです。</p>
+            </div>
+
+            <div class="scroll-reveal mt-16">
+                <p class="text-center text-xs text-gray-400 mb-4 tracking-widest uppercase">Special Price</p>
+                <div class="bg-gradient-to-br from-rose-300 to-rose-400 text-white rounded-3xl p-10 text-center shadow-xl">
+                    <p class="text-lg opacity-80 mb-2 font-bold">初回限定キャンペーン</p>
+                    <p class="text-5xl font-black serif tracking-widest mb-2">9,800円<span class="text-xl">！</span></p>
+                    <p class="text-[10px] opacity-60">※カウンセリング料込み、追加費用なし</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Trust & Reassurance -->
+        <section class="py-20 bg-rose-50/30 px-8">
+            <div class="scroll-reveal space-y-8">
+                <p class="text-sm text-gray-500 italic text-center">「どうせ高い契約を迫られるんでしょ？」</p>
+                <p>私もそう思っていました。でも、拍子抜けするほど「あっさり」帰してくれたんです。</p>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100">
+                    <p class="text-sm text-rose-500 font-bold mb-2">――担当者の言葉</p>
+                    <p class="text-sm leading-relaxed">「1回でしっかり変化を感じてもらえれば、きっとまた困った時に思い出してくださる。私たちは技術を信じています」</p>
+                </div>
+            </div>
+
+            <!-- Practical Cards -->
+            <div class="grid grid-cols-2 gap-4 mt-12 scroll-reveal">
+                <div class="bg-white p-4 rounded-xl shadow-sm">
+                    <p class="font-bold text-xs text-rose-400 border-b border-rose-50 mb-2 pb-1">痛みは？</p>
+                    <p class="text-[10px] text-gray-600 leading-relaxed">予防接種程度のチクッ。数日の筋肉痛程度でした。</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-sm">
+                    <p class="font-bold text-xs text-rose-400 border-b border-rose-50 mb-2 pb-1">腫れは？</p>
+                    <p class="text-[10px] text-gray-600 leading-relaxed">翌日にはひいて、メイクで隠せる程度です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Clinic & Doctor -->
+        <section class="py-20 px-8 bg-white">
+            <div class="scroll-reveal">
+                <h3 class="serif text-center font-bold text-lg mb-10 deco-title">選んだのは、確かな実績の JUNO</h3>
+                <div class="bg-medical-light-blue rounded-[40px] p-8">
+                    <div class="flex items-center gap-6 mb-8">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71f15367ef?auto=format&fit=crop&q=80&w=400" alt="Doctor" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md">
+                        <div>
+                            <p class="text-xs text-blue-500 font-bold">医師</p>
+                            <p class="text-lg font-bold">河合朋子 先生</p>
+                            <p class="text-[9px] text-gray-400">医学博士 / 専門医</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    毎日ですか？ それは初耳です。<br>
-                    実際、それで下半身の調子って変わるものなんですか？
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        勃起は血流なので、血流の状態が良くなると下半身の反応が安定したと感じる方はいます。
-                    </div>
-                    <!-- 踏み込みゾーン -->
-                    <div class="deep-dive-box w-full">
-                        <span class="font-bold block mb-1">💡 踏み込み表現</span>
-                        「ガツンと効かせる」というより、直前に飲まなくても「自然に反応しやすい状態」に近づいていく感覚。「調子の良い状態が続く」という表現が近いです。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    ずっと勃ちっぱなしになったりしませんか？（笑）
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        いえ、そういう薬ではありません（笑）。<br>
-                        あくまで必要な時にだけ、自然に反応するタイプです。
-                    </div>
-                </div>
-            </div>
-
-             <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        血流は全身に関係するので、体全体のコンディションの話として捉える方もいます。
-                    </div>
-                    <!-- 踏み込みゾーン -->
-                    <div class="deep-dive-box w-full">
-                        <span class="font-bold block mb-1">💡 踏み込み表現</span>
-                        アンチエイジングの考え方に近く、実は私も含め、医師や著名人の中にはこうした使い方をしている方が多いのも事実です。「全体的な健康管理」という視点で選ばれています。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        当院でも処方を行っています。診察の中で体の状態を確認しながら相談してください。
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-white/60 p-3 rounded-lg text-center">
+                            <p class="text-[9px] opacity-60">実績</p>
+                            <p class="text-sm font-bold">8万件</p>
+                        </div>
+                        <div class="bg-white/60 p-3 rounded-lg text-center">
+                            <p class="text-[9px] opacity-60">LINE登録</p>
+                            <p class="text-sm font-bold">34万人</p>
+                        </div>
+                        <div class="bg-white/60 p-3 rounded-lg text-center">
+                            <p class="text-[9px] opacity-60">安全性</p>
+                            <p class="text-sm font-bold">10年無事故</p>
+                        </div>
+                        <div class="bg-white/60 p-3 rounded-lg text-center">
+                            <p class="text-[9px] opacity-60">店舗</p>
+                            <p class="text-sm font-bold">全国24店</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- テーマ3 -->
-        <section>
-            <h2 class="text-lg font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-6">【テーマ3】早漏改善 (P-CONTROL)<br><span class="text-sm font-normal text-gray-600">〜アトム独自の「3段階」複合アプローチ〜</span></h2>
-            
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    続いて、実はEDと同じくらい悩みが多いと言われる「早漏」についてです。こちらにも新しい治療法があるとか？
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        はい。「P-CONTROL（Pコントロール）」という当院オリジナルの治療法を推奨しています。<br>
-                        これは単なる飲み薬ではなく、<strong>「注射」「内服」「スプレー」の3つを組み合わせた、アトム独自の複合プログラム</strong>です。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    具体的には、どういったことをするんですか？
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        主に3つのアプローチを同時に行います。<br><br>
-                        <span class="font-bold text-teal-700">① アトムオリジナル注射</span><br>
-                        局所の過剰な反応を直接抑え、コントロールしやすい状態を作ります。<br><br>
-                        <span class="font-bold text-teal-700">② 早漏用内服薬</span><br>
-                        体の内側から「持続力」をしっかりサポートします。<br><br>
-                        <span class="font-bold text-teal-700">③ 直前サポート（スプレー）</span><br>
-                        行為の30分前に使用し、その場のコンディションを確実なものにします。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    なるほど！セットで徹底的に対策するわけですね。<br>
-                    先ほど「半年持つ」というお話もありましたが、それはこの注射の効果ですか？
-                </div>
-                <div class="telop-box">テロップ：「セットで徹底対策！」</div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        そうですね。このオリジナル注射の効果が一般的に数ヶ月〜半年程度と言われています。<br>
-                        もちろん個人差はありますが、<strong>「半年間、常に自信を持ってコントロールできる状態」</strong>を目指すための土台をしっかり作っていくイメージです。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    「その場しのぎ」ではなく、半年間自分に自信を持ち続けるためのプログラムなんですね。
-                </div>
-                <div class="telop-box">テロップ：「半年間、自信が続く！」</div>
-            </div>
-            
-            <!-- 価格訴求の補足 -->
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        はい。これだけ充実した内容で、まずは気軽に試していただきたいので、<strong>9,800円</strong>からご用意しています。
-                    </div>
-                </div>
-            </div>
-            
-             <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    9,800円！？ それなら試しやすいですね！
-                </div>
-                <div class="telop-box">テロップ：「まさかの9,800円！」</div>
-            </div>
-        </section>
-
-        <!-- テーマ4 -->
-        <section>
-            <h2 class="text-lg font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-6">【テーマ4】AGA治療 (HMPF成長因子40種)<br><span class="text-sm font-normal text-gray-600">〜40種類の成分で、あらゆる薄毛の原因を網羅〜</span></h2>
-            
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    最後に、薄毛・AGA治療についてです。アトムクリニックさんの成長因子注入は「40種類」も入っていると聞きましたが、これって他と何が違うんですか？
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        ここが最大の特徴です。実は、薄毛の原因というのは一つではありません。<br>
-                        「血流不足」「成長因子の不足」「細胞の老化」「頭皮環境の悪化」など、原因が複雑に絡み合っています。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    なるほど。だから人によって効く治療が違ったりするんですね。
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        その通りです。一般的な治療は数種類の成分に頼りますが、当院は<strong>「40種類」もの成長因子（HMPF）</strong>を配合しています。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    40種類も入っていると、何が良いんでしょうか？
-                </div>
-                <div class="telop-box">テロップ：「40種類、ここが凄い！」</div>
-            </div>
-
-            <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        薄毛を引き起こすほとんどの原因に対して、一気にアプローチできるという点です。<br>
-                        「この成分が足りないから生えない」という取りこぼしをなくし、眠っている髪の成長スイッチを全方位から押すことができます。
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    これまでの治療で効果が出なかった方でも、40種類あれば自分に必要な「正解」が入っている可能性が高いということですね。
-                </div>
-                <div class="telop-box">テロップ：「自分に合う正解が見つかる！」</div>
-            </div>
-            
-             <div class="mb-6 speaker-yamaguchi">
-                <div class="content-wrapper w-11/12">
-                    <p class="name text-xs font-bold mb-1 mr-1">山口先生</p>
-                    <div class="bubble p-4 w-full">
-                        おっしゃる通りです。原因を特定して一つずつ試すのではなく、40種類の力で網羅的に解決を目指す。これが当院の強みですね。
-                    </div>
+        <!-- Final CTA -->
+        <section class="py-24 px-8 bg-rose-50 text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-rose-100 rounded-full blur-3xl opacity-50"></div>
+            <div class="relative scroll-reveal">
+                <h2 class="serif-heavy text-xl leading-relaxed mb-10">
+                    検索するだけの夜を、<br>
+                    <span class="text-rose-400">今夜で終わりにしませんか？</span>
+                </h2>
+                <div class="space-y-6">
+                    <a href="#" class="btn-pulse line-btn inline-flex flex-col items-center justify-center bg-[#06C755] text-white py-6 px-10 rounded-[50px] shadow-xl w-full">
+                        <span class="text-xs opacity-90 mb-1">＼ 30秒で完了 ／</span>
+                        <div class="flex items-center gap-3">
+                            <i class="bi bi-line text-2xl"></i>
+                            <span class="text-lg font-bold">無料シミュレーションを受ける</span>
+                        </div>
+                    </a>
+                    <p class="text-[10px] text-gray-400 italic">
+                        「お母さん」ではなく「一人の女性」として扱われる喜びを。<br>
+                        10年ぶりの自分に、会いに行きましょう。
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- エンディング -->
-        <section>
-            <h2 class="text-lg font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-6">【エンディング】まとめ</h2>
-            
-            <div class="mb-6 speaker-tanaka">
-                <p class="name text-xs font-bold mb-1 ml-1">田中大貴</p>
-                <div class="bubble p-4">
-                    今日お話を伺って、EDも早漏も薄毛も、「我慢したり諦めたりする必要はない」ということがよく分かりました。<br>
-                    先生、今日は本当にありがとうございました！
-                </div>
-            </div>
-        </section>
+        <footer class="py-10 text-center text-[9px] text-gray-300 tracking-[0.2em] border-t border-gray-50 uppercase bg-white">
+            &copy; Slurim Official Web Magazine | Beauty Column
+        </footer>
+    </div>
 
-        <!-- SNS素材 -->
-        <section class="bg-gray-800 text-white p-6 rounded-lg mt-12">
-            <h2 class="text-xl font-bold border-b border-gray-600 pb-2 mb-4 text-yellow-400">★SNS広告用 素材収録リスト</h2>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="font-bold text-yellow-200 mb-2">1. 驚きのリアクション</h3>
-                    <ul class="list-disc list-inside text-sm space-y-1 text-gray-300">
-                        <li>「えっ！半年も持つんですか！？」</li>
-                        <li>「9,800円！？ それなら試せる！」</li>
-                        <li>「40種類…！？ 聞いたことないです！」</li>
-                        <li>「え、注射だけでいいんですか？」</li>
-                    </ul>
-                </div>
+    <!-- Scroll Reveal Script -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
 
-                <div>
-                    <h3 class="font-bold text-yellow-200 mb-2">2. 共感・問いかけ</h3>
-                    <ul class="list-disc list-inside text-sm space-y-1 text-gray-300">
-                        <li>「薬を飲むタイミング、面倒くさくないですか？」</li>
-                        <li>「その悩み、実は注射一本で解決するかもしれません。」</li>
-                        <li>「まだ諦めるのは早いです！」</li>
-                        <li>「男としての自信、取り戻しませんか？」</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-yellow-200 mb-2">3. 納得・信頼・解決</h3>
-                    <ul class="list-disc list-inside text-sm space-y-1 text-gray-300">
-                         <li>「根本治療…それが一番の解決策ですね。」</li>
-                         <li>「先生の話を聞いて、選択肢が変わりました。」</li>
-                         <li>「これなら、もっと早く知りたかったです！」</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="font-bold text-yellow-200 mb-2">4. ターゲット呼びかけ</h3>
-                    <ul class="list-disc list-inside text-sm space-y-1 text-gray-300">
-                        <li>「30代、40代の働き盛りの皆さん、必見です！」</li>
-                        <li>「パートナーとの関係で悩んでいる方、聞いてください。」</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-    </main>
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
