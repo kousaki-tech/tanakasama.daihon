@@ -11,11 +11,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@400;700;900&family=Shippori+Mincho:wght@400;700&display=swap');
         
         :root {
-            --bg-feminine: #fff9f9;
+            --bg-feminine: #fffefd;
             --rose-accent: #e2b4b4;
-            --gold-soft: #d9c5a0;
-            --text-charcoal: #4a4444;
-            --medical-light-blue: #eef4f8;
+            --gold-deep: #b08d57;
+            --text-charcoal: #332d2d;
+            --lie-red: #d64545;
         }
 
         body {
@@ -32,24 +32,62 @@
             max-width: 600px;
             margin: 0 auto;
             background: white;
-            box-shadow: 0 0 50px rgba(226, 180, 180, 0.15);
+            box-shadow: 0 0 50px rgba(176, 141, 87, 0.1);
         }
 
-        /* 装飾的な見出し */
-        .deco-title {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
+        /* ファーストビュー特別スタイル */
+        .hero-section {
+            background: linear-gradient(to bottom, #ffffff, #fffcf9);
+            padding-bottom: 2rem;
         }
-        .deco-title::after {
-            content: '';
+
+        .lie-badge {
+            display: inline-block;
+            background: var(--lie-red);
+            color: white;
+            padding: 4px 12px;
+            font-weight: 900;
+            transform: rotate(-2deg);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .explanation-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--rose-accent);
+            padding: 1.5rem;
+            border-radius: 10px;
+            position: relative;
+            z-index: 10;
+            margin-top: -60px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+        .explanation-box::before {
+            content: "CHECK IT!";
             position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background: var(--rose-accent);
+            top: -15px;
+            right: 20px;
+            background: var(--gold-deep);
+            color: white;
+            font-size: 10px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* スクロールを促すアニメーション */
+        .scroll-hint {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
         }
 
         .scroll-reveal {
@@ -63,23 +101,11 @@
             transform: translateY(0);
         }
 
-        /* 吹き出し */
-        .bubble-left {
-            position: relative;
-            background: #fff;
-            border: 1px solid #eee;
-            padding: 1.5rem;
-            border-radius: 20px;
-            margin-left: 20px;
-        }
-
-        /* マーカーアニメーション */
         .marker-rose {
             background: linear-gradient(transparent 60%, #ffe4e4 60%);
             font-weight: bold;
         }
 
-        /* LINEボタンの鼓動 */
         .btn-pulse {
             animation: pulse-animation 2s infinite;
         }
@@ -87,11 +113,6 @@
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.7); }
             70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(6, 199, 85, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(6, 199, 85, 0); }
-        }
-
-        .img-soft-shadow {
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
-            border-radius: 30px 5px 30px 5px;
         }
 
         .bg-lace {
@@ -105,34 +126,57 @@
     <div class="article-container min-h-screen">
         <!-- 1. Header -->
         <div class="py-4 text-center border-b border-rose-50 tracking-widest text-[10px] text-rose-300">
-            WOMAN'S BEAUTY JOURNAL | SPECIAL COLUMN
+            SPECIAL BEAUTY REPORT | 2026.02.20
         </div>
 
-        <!-- 2. Hero Section -->
-        <section class="relative">
-            <div class="px-6 pt-12 pb-8 text-center bg-white">
-                <span class="text-xs text-rose-400 font-bold tracking-tighter mb-4 block">いつまでも、「綺麗な私」でいたい奥様へ</span>
-                <h1 class="serif-heavy text-2xl md:text-3xl leading-snug mb-8">
-                    たった15分の施術で、<br>
-                    <span class="text-rose-400">もう一度あの人の目</span>を<br>引きつけたいあなたへ
-                </h1>
+        <!-- 2. Strong FV Section -->
+        <section class="hero-section relative">
+            <div class="px-6 pt-12 pb-16 text-center">
+                <div class="animate__animated animate__fadeInDown">
+                    <span class="text-[10px] text-gray-400 tracking-[0.3em] mb-4 block uppercase font-bold">Editorial Column</span>
+                    <h1 class="serif-heavy text-2xl md:text-3xl leading-snug mb-2">
+                        たった15分の施術で、<br>
+                        <span class="text-rose-400 border-b-2 border-rose-100">もう一度あの人の目</span>を<br>引きつけたいあなたへ
+                    </h1>
+                </div>
             </div>
             
-            <div class="px-4">
-                <div class="relative group">
-                    <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80&w=1000" alt="Room Atmosphere" class="w-full h-[450px] object-cover img-soft-shadow">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8 text-white">
-                        <div class="bg-white/20 backdrop-blur-md p-4 rounded-lg border border-white/30 inline-block mb-4">
-                            <p class="text-sm font-bold">「スルリムやばい」は嘘？</p>
-                            <p class="text-[10px] opacity-90">何をしても痩せなかった私が徹底解説！！</p>
+            <div class="px-4 relative">
+                <div class="relative overflow-hidden rounded-[40px] shadow-2xl animate__animated animate__fadeIn">
+                    <!-- Emotional Visual -->
+                    <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80&w=1000" alt="夜、鏡を見つめる女性" class="w-full h-[500px] object-cover">
+                    <!-- Overlay Text -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+                        <div class="mb-16">
+                            <div class="lie-badge text-xl md:text-2xl animate__animated animate__shakeX animate__delay-1s">
+                                「スルリムやばい」は嘘？
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Featured Explanation Box (The Hook) -->
+                <div class="explanation-box animate__animated animate__fadeInUp animate__delay-1s">
+                    <p class="text-sm font-bold text-gray-800 leading-relaxed text-center">
+                        <span class="text-rose-500">何をしても痩せなかった私が</span><br>
+                        今のリアルを<span class="border-b-2 border-rose-400">本音で徹底解説！！</span>
+                    </p>
+                    <div class="mt-4 flex justify-center items-center gap-2 text-[10px] text-gray-400">
+                        <span class="flex items-center gap-1"><i class="bi bi-clock"></i> 読了目安 3分</span>
+                        <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                        <span class="flex items-center gap-1"><i class="bi bi-eye"></i> 340,210人が閲覧中</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 scroll-hint text-rose-200">
+                <p class="text-[10px] mb-2 font-bold tracking-widest">SCROLL</p>
+                <i class="bi bi-chevron-double-down"></i>
             </div>
         </section>
 
         <!-- 3. Introduction / Empathy -->
-        <section class="px-8 py-16 space-y-12">
+        <section class="px-8 py-16 space-y-12 bg-white">
             <div class="scroll-reveal text-center">
                 <p class="serif text-xl font-bold mb-4 tracking-tighter leading-relaxed">
                     検索するだけの夜を、<br>今夜で終わりにしませんか？
@@ -142,7 +186,7 @@
             </div>
 
             <div class="scroll-reveal">
-                <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&q=80&w=800" alt="Tired Woman" class="w-full h-64 object-cover rounded-2xl mb-8">
+                <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&q=80&w=800" alt="悩む女性" class="w-full h-64 object-cover rounded-2xl mb-8 shadow-sm">
                 <div class="space-y-6 text-gray-600">
                     <p>もしあなたが今、このような思いがあるのなら、ぜひ数分私のお話を聞いてくれないでしょうか。</p>
                     <p>私は、糖質制限に16時間断食、ジムに通い、SNSでバズった宅トレを毎日こなし......。</p>
@@ -156,37 +200,37 @@
                     「体質のせい？ それとも、もう一生このまま？」
                 </p>
                 <p class="text-sm text-gray-500">
-                    新しいダイエットを始める時、旦那に報告しても「またかよ」という顔。「いつ痩せるんだよ」という一言が、胸に刺さっていました。
+                    新しいダイエットを始める時、旦那に報告しても「またかよ」という顔。「いつ痩せるんだよ」という冷たい一言が、ずっと胸の奥に刺さっていました。
                 </p>
             </div>
 
-            <div class="scroll-reveal text-center py-10">
-                <p class="text-red-500 font-bold mb-2">――衝撃の瞬間は突然に。</p>
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800" alt="Surprised Face" class="w-32 h-32 object-cover rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
+            <div class="scroll-reveal text-center py-10 bg-lace rounded-3xl">
+                <p class="text-red-500 font-bold mb-4 tracking-widest text-xs">―― 衝撃の瞬間は、突然に ――</p>
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800" alt="驚く表情" class="w-32 h-32 object-cover rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
                 <p class="serif text-2xl text-rose-500 font-bold leading-relaxed mb-4">
                     「なんか...綺麗になった？」
                 </p>
-                <p class="text-sm text-gray-600">
-                    ある日、横を通り過ぎる時に二度見した旦那が放った言葉。その一言で、今までの惨めな気持ちが吹き飛びました。
+                <p class="text-sm text-gray-600 px-4 leading-loose">
+                    ある日、横を通り過ぎる時に二度見した旦那が放った言葉。その一言で、今までの慘めな気持ちが吹き飛びました。
                 </p>
             </div>
         </section>
 
         <!-- 4. Points Checklist -->
-        <section class="bg-lace py-16 px-8">
+        <section class="py-16 px-8 bg-gray-50">
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-rose-50 scroll-reveal">
-                <h3 class="serif text-center text-lg font-bold mb-8 deco-title">この記事を見てわかること</h3>
+                <h3 class="serif text-center text-lg font-bold mb-8 text-rose-800">この記事でお話しすること</h3>
                 <ul class="space-y-6">
                     <li class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=200" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                        <span class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 font-bold text-xs">01</span>
                         <span class="text-sm font-bold">その施術「スルリム」の内容とは</span>
                     </li>
                     <li class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=200" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                        <span class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 font-bold text-xs">02</span>
                         <span class="text-sm font-bold">実際に受けてきた本音の感想</span>
                     </li>
                     <li class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=200" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                        <span class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 font-bold text-xs">03</span>
                         <span class="text-sm font-bold">痛み・腫れ・ダウンタイム</span>
                     </li>
                 </ul>
@@ -196,48 +240,55 @@
         <!-- 5. Content / Solution -->
         <section class="px-8 py-20 bg-white">
             <div class="scroll-reveal mb-12">
-                <h2 class="serif-heavy text-2xl text-center mb-10 deco-title">私の人生を変えた「スルリム」</h2>
+                <h2 class="serif-heavy text-2xl text-center mb-10 text-rose-900 border-b border-rose-100 pb-4">私の人生を変えた「スルリム」</h2>
                 <div class="space-y-6">
-                    <p>怪しいと思っていたその主成分は<span class="font-bold">「デオキシコール酸」</span>。難しい名前ですが、やっていることは<span class="marker-rose">「頑固な脂肪の膜を直接破壊する」</span>というシンプルなことでした。</p>
-                    <img src="https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=80&w=800" alt="Medical Science" class="w-full h-48 object-cover rounded-xl shadow-inner">
+                    <p>怪しいと思っていたその主成分は<span class="font-bold text-rose-500">「デオキシコール酸」</span>。難しい名前ですが、やっていることは<span class="marker-rose">「頑固な脂肪の膜を直接破壊する」</span>という、極めてシンプルなことでした。</p>
+                    <img src="https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=80&w=800" alt="医療イメージ" class="w-full h-48 object-cover rounded-xl shadow-inner border border-gray-100">
                 </div>
             </div>
 
-            <div class="scroll-reveal bg-medical-light-blue p-8 rounded-[30px] space-y-4">
-                <p class="text-blue-900 font-bold">一回で35%の脂肪細胞を破壊！！</p>
-                <p class="text-sm leading-relaxed">ゴミ（脂肪）を片付けるだけでなく、<span class="font-bold">「ゴミ箱（脂肪細胞）ごと撤去する」</span>イメージ。だから、もうリバウンドに怯える必要がなくなるんです。</p>
+            <div class="scroll-reveal bg-blue-50/50 p-8 rounded-[30px] space-y-4 border border-blue-100">
+                <p class="text-blue-900 font-bold flex items-center gap-2">
+                    <i class="bi bi-stars"></i> 一回で35%の脂肪細胞を破壊！！
+                </p>
+                <p class="text-sm leading-relaxed text-blue-800/80">
+                    ゴミ（脂肪）を片付けるだけでなく、<span class="font-bold">「ゴミ箱（脂肪細胞）ごと撤去する」</span>イメージ。だから、もう二度とリバウンドに怯える必要がなくなるんです。
+                </p>
             </div>
 
             <div class="scroll-reveal mt-16">
-                <p class="text-center text-xs text-gray-400 mb-4 tracking-widest uppercase">Special Price</p>
-                <div class="bg-gradient-to-br from-rose-300 to-rose-400 text-white rounded-3xl p-10 text-center shadow-xl">
-                    <p class="text-lg opacity-80 mb-2 font-bold">初回限定キャンペーン</p>
-                    <p class="text-5xl font-black serif tracking-widest mb-2">9,800円<span class="text-xl">！</span></p>
-                    <p class="text-[10px] opacity-60">※カウンセリング料込み、追加費用なし</p>
+                <div class="bg-gradient-to-br from-gray-800 to-black text-white rounded-3xl p-10 text-center shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10"><i class="bi bi-tag-fill text-6xl"></i></div>
+                    <p class="text-lg opacity-80 mb-2 font-bold tracking-widest">初回限定キャンペーン</p>
+                    <p class="text-5xl font-black serif tracking-widest mb-4">9,800円<span class="text-xl">！</span></p>
+                    <p class="text-[10px] opacity-60">※カウンセリング料込み・追加費用一切なし</p>
                 </div>
             </div>
         </section>
 
         <!-- 6. Trust & Reassurance -->
-        <section class="py-20 bg-rose-50/30 px-8">
+        <section class="py-20 bg-rose-50/20 px-8">
             <div class="scroll-reveal space-y-8">
                 <p class="text-sm text-gray-500 italic text-center">「どうせ高い契約を迫られるんでしょ？」</p>
-                <p>私もそう思っていました。でも、拍子抜けするほど「あっさり」帰してくれたんです。</p>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100">
-                    <p class="text-sm text-rose-500 font-bold mb-2">――担当者の言葉</p>
-                    <p class="text-sm leading-relaxed">「1回でしっかり変化を感じてもらえれば、きっとまた困った時に思い出してくださる。私たちは技術を信じています」</p>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-rose-100 relative">
+                    <i class="bi bi-chat-quote-fill absolute -top-4 -left-2 text-3xl text-rose-100"></i>
+                    <p class="text-sm text-rose-500 font-bold mb-4">担当者の方の言葉が、決め手でした。</p>
+                    <p class="text-sm leading-relaxed text-gray-600">
+                        「1回でしっかり変化を感じてもらえれば、きっとまた困った時に思い出してくださる。私たちは自分たちの技術を信じています」
+                    </p>
                 </div>
+                <p class="text-sm text-center">そう言って「あっさり」帰してくれた時の自信に、私は100%の納得を覚えました。</p>
             </div>
 
             <!-- Practical Cards -->
-            <div class="grid grid-cols-2 gap-4 mt-12 scroll-reveal">
-                <div class="bg-white p-4 rounded-xl shadow-sm">
-                    <p class="font-bold text-xs text-rose-400 border-b border-rose-50 mb-2 pb-1">痛みは？</p>
-                    <p class="text-[10px] text-gray-600 leading-relaxed">予防接種程度のチクッ。数日の筋肉痛程度でした。</p>
+            <div class="grid grid-cols-2 gap-4 mt-12 scroll-reveal text-center">
+                <div class="bg-white p-4 rounded-2xl shadow-sm">
+                    <p class="font-bold text-xs text-rose-400 mb-2">痛みは？</p>
+                    <p class="text-[10px] text-gray-500 leading-relaxed">予防接種程度のチクッ。数日の筋肉痛程度でした。</p>
                 </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm">
-                    <p class="font-bold text-xs text-rose-400 border-b border-rose-50 mb-2 pb-1">腫れは？</p>
-                    <p class="text-[10px] text-gray-600 leading-relaxed">翌日にはひいて、メイクで隠せる程度です。</p>
+                <div class="bg-white p-4 rounded-2xl shadow-sm">
+                    <p class="font-bold text-xs text-rose-400 mb-2">ダウンタイム</p>
+                    <p class="text-[10px] text-gray-500 leading-relaxed">翌日にはひいて、メイクで隠せる程度です。</p>
                 </div>
             </div>
         </section>
@@ -245,31 +296,31 @@
         <!-- 7. Clinic & Doctor -->
         <section class="py-20 px-8 bg-white">
             <div class="scroll-reveal">
-                <h3 class="serif text-center font-bold text-lg mb-10 deco-title">選んだのは、確かな実績の JUNO</h3>
-                <div class="bg-medical-light-blue rounded-[40px] p-8">
+                <h3 class="serif text-center font-bold text-lg mb-10 text-rose-900 border-b border-rose-50 pb-4">選んだのは、確かな実績の JUNO</h3>
+                <div class="bg-gray-50 rounded-[40px] p-8 border border-gray-100">
                     <div class="flex items-center gap-6 mb-8">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71f15367ef?auto=format&fit=crop&q=80&w=400" alt="Doctor" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71f15367ef?auto=format&fit=crop&q=80&w=400" alt="河合朋子医師" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md">
                         <div>
-                            <p class="text-xs text-blue-500 font-bold">医師</p>
+                            <p class="text-xs text-rose-400 font-bold">医師</p>
                             <p class="text-lg font-bold">河合朋子 先生</p>
-                            <p class="text-[9px] text-gray-400">医学博士 / 専門医</p>
+                            <p class="text-[9px] text-gray-400 font-bold tracking-tighter">医学博士 / 日本内科学会専門医</p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="bg-white/60 p-3 rounded-lg text-center">
-                            <p class="text-[9px] opacity-60">実績</p>
+                    <div class="grid grid-cols-2 gap-3 text-center">
+                        <div class="bg-white p-3 rounded-xl border border-rose-50">
+                            <p class="text-[9px] opacity-60 mb-1">累計実績</p>
                             <p class="text-sm font-bold">8万件</p>
                         </div>
-                        <div class="bg-white/60 p-3 rounded-lg text-center">
-                            <p class="text-[9px] opacity-60">LINE登録</p>
+                        <div class="bg-white p-3 rounded-xl border border-rose-50">
+                            <p class="text-[9px] opacity-60 mb-1">LINE登録</p>
                             <p class="text-sm font-bold">34万人</p>
                         </div>
-                        <div class="bg-white/60 p-3 rounded-lg text-center">
-                            <p class="text-[9px] opacity-60">安全性</p>
-                            <p class="text-sm font-bold">10年無事故</p>
+                        <div class="bg-white p-3 rounded-xl border border-rose-50">
+                            <p class="text-[9px] opacity-60 mb-1">安全性</p>
+                            <p class="text-sm font-bold text-rose-500">10年無事故</p>
                         </div>
-                        <div class="bg-white/60 p-3 rounded-lg text-center">
-                            <p class="text-[9px] opacity-60">店舗</p>
+                        <div class="bg-white p-3 rounded-xl border border-rose-50">
+                            <p class="text-[9px] opacity-60 mb-1">店舗数</p>
                             <p class="text-sm font-bold">全国24店</p>
                         </div>
                     </div>
@@ -278,22 +329,22 @@
         </section>
 
         <!-- Final CTA -->
-        <section class="py-24 px-8 bg-rose-50 text-center relative overflow-hidden">
-            <div class="absolute -top-10 -right-10 w-40 h-40 bg-rose-100 rounded-full blur-3xl opacity-50"></div>
+        <section class="py-24 px-8 bg-rose-50/50 text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-rose-200 rounded-full blur-3xl opacity-30"></div>
             <div class="relative scroll-reveal">
                 <h2 class="serif-heavy text-xl leading-relaxed mb-10">
                     検索するだけの夜を、<br>
-                    <span class="text-rose-400">今夜で終わりにしませんか？</span>
+                    <span class="text-rose-500 border-b-2 border-rose-200">今夜で終わりにしませんか？</span>
                 </h2>
                 <div class="space-y-6">
                     <a href="#" class="btn-pulse line-btn inline-flex flex-col items-center justify-center bg-[#06C755] text-white py-6 px-10 rounded-[50px] shadow-xl w-full">
-                        <span class="text-xs opacity-90 mb-1">＼ 30秒で完了 ／</span>
+                        <span class="text-xs opacity-90 mb-1">＼ 30秒で簡単予約 ／</span>
                         <div class="flex items-center gap-3">
                             <i class="bi bi-line text-2xl"></i>
                             <span class="text-lg font-bold">無料シミュレーションを受ける</span>
                         </div>
                     </a>
-                    <p class="text-[10px] text-gray-400 italic">
+                    <p class="text-[10px] text-gray-400 italic leading-loose">
                         「お母さん」ではなく「一人の女性」として扱われる喜びを。<br>
                         10年ぶりの自分に、会いに行きましょう。
                     </p>
@@ -306,7 +357,6 @@
         </footer>
     </div>
 
-    <!-- Scroll Reveal Script -->
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
