@@ -1,370 +1,381 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【公式】ヨコタエンタープライズ採用特設サイト | 栃木市正社員募集</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Noto Sans JP', sans-serif; }
-        .hero-gradient { background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 58, 138, 0.7) 100%); }
-        details summary::-webkit-details-marker { display: none; }
-        .sticky-cta { transition: transform 0.3s ease-in-out; }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-900 leading-relaxed overflow-x-hidden">
+import React, { useState, useEffect } from 'react';
+import { 
+  ChevronRight, 
+  Home, 
+  Coins, 
+  GraduationCap, 
+  CheckCircle2, 
+  Clock, 
+  MapPin, 
+  Truck,
+  ShieldCheck,
+  Smartphone,
+  Zap,
+  UserCheck,
+  AlertCircle,
+  HelpCircle,
+  Target,
+  Phone,
+  Users,
+  Coffee,
+  Handshake
+} from 'lucide-react';
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-5 bg-transparent">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="flex flex-col">
-                <span class="text-[10px] text-orange-500 font-bold leading-none">株式会社ヨコタエンタープライズ</span>
-                <span class="font-black text-xl tracking-tighter text-blue-900">採用特設サイト</span>
+const App = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const benefits = [
+    { 
+      icon: <Home className="w-8 h-8" />, 
+      title: "【家賃0円】個室寮", 
+      desc: "生活費をグッと抑えて貯金。初期費用も会社が負担します。",
+      img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45?auto=format&fit=crop&q=80&w=400"
+    },
+    { 
+      icon: <Truck className="w-8 h-8" />, 
+      title: "引越し・移動0円", 
+      desc: "遠方からの赴任も安心。チケット手配や引越し代をサポート。",
+      img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=400"
+    },
+    { 
+      icon: <Coins className="w-8 h-8" />, 
+      title: "安定の「正社員」", 
+      desc: "月収例28万円超。賞与・昇給ありで長く安定して働けます。",
+      img: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=400"
+    },
+    { 
+      icon: <GraduationCap className="w-8 h-8" />, 
+      title: "未経験からプロへ", 
+      desc: "ヨコタアカデミーで一生モノの技術と資格を身につける。",
+      img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400"
+    },
+  ];
+
+  const suitability = {
+    pro: [
+      { title: "真面目にコツコツ派", desc: "決められた手順を正確に守り、丁寧に作業を進めるのが得意な方。" },
+      { title: "今の生活を変えたい", desc: "「派遣やアルバイトから抜け出して、正社員として安定したい」という意欲。" },
+      { title: "手に職をつけたい", desc: "将来的にITや設計、管理職など、現場の先のキャリアにも興味がある方。" },
+      { title: "地元愛・栃木愛", desc: "栃木の地で、日本の物流を支える大きな仕事に携わりたい方。" }
+    ],
+    con: [
+      { title: "ルールを守るのが苦手", desc: "安全第一の現場です。決められたルールや手順を軽視する方には向きません。" },
+      { title: "夜勤は絶対に無理", desc: "2交代制（夜勤あり）です。生活リズムの調整が全くできない方には厳しいです。" },
+      { title: "一人で勝手に進めたい", desc: "チームでバトンを繋ぐライン作業です。協力体制を無視する方は務まりません。" }
+    ]
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-x-hidden leading-relaxed">
+      {/* Navigation */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <div className="flex items-center gap-3 md:gap-4">
+            {/* ひとなりロゴエリア */}
+            <div className="flex items-center">
+              <div className="bg-orange-500 text-white p-1.5 rounded-lg mr-2">
+                <Handshake size={20} />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[14px] md:text-[18px] font-black tracking-tighter text-orange-600 leading-none">ひとなり</span>
+                <span className="text-[8px] md:text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">hitonari</span>
+              </div>
             </div>
-            <a href="#apply" class="bg-orange-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-orange-700 transition shadow-lg hidden md:block text-sm">
-                今すぐエントリー
-            </a>
+            {/* 境界線 */}
+            <div className="h-8 w-px bg-slate-300 mx-1 md:mx-2"></div>
+            {/* 株式会社ヨコタエンタープライズロゴエリア */}
+            <div className="flex flex-col">
+              <span className="text-[10px] md:text-[12px] text-blue-900 font-black leading-tight">株式会社ヨコタエンタープライズ</span>
+              <span className="text-[8px] text-slate-400 font-medium">採用特設パートナー</span>
+            </div>
+          </div>
+          <button className="bg-orange-600 text-white px-4 md:px-6 py-2 rounded-full font-bold hover:bg-orange-700 transition shadow-lg hidden sm:block text-xs md:text-sm">
+            今すぐエントリー
+          </button>
         </div>
-    </nav>
+      </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-[85vh] flex items-center bg-slate-900 text-white overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000" alt="日本の製造現場" class="w-full h-full object-cover opacity-50">
-            <div class="absolute inset-0 hero-gradient"></div>
+      {/* Hero Section */}
+      <section className="relative min-h-[85vh] flex items-center bg-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2000" 
+            alt="日本の製造現場" 
+            className="w-full h-full object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-900/70 to-transparent"></div>
         </div>
         
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-md mb-6 border border-white/20">
-                    <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-                    <span class="text-xs font-bold tracking-widest text-orange-100">栃木市大平町 / 正社員募集</span>
-                </div>
-                <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight">
-                    「自分には無理」を<br>
-                    <span class="text-orange-400">「ここならできる」</span>に。
-                </h1>
-                <p class="text-lg md:text-xl text-blue-50 mb-10 leading-relaxed">
-                    家賃無料の個室寮、引越し支援、手厚い研修。<br>
-                    特別なスキルがなくても、大手メーカーの現場で<br class="hidden md:block">
-                    正社員として人生を再スタートできます。
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#apply" class="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-5 rounded-xl font-bold shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center">
-                        まずは内容をチェック <i data-lucide="chevron-right" class="ml-1 w-5 h-5"></i>
-                    </a>
-                </div>
-                <p class="mt-6 text-sm text-blue-200 flex items-center gap-2">
-                    <i data-lucide="zap" class="w-4 h-4 text-orange-400"></i>
-                    平日9時〜18時なら30分以内にご連絡します
-                </p>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-md mb-6 border border-white/20">
+              <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+              <span className="text-xs font-bold tracking-widest text-orange-100 uppercase">栃木市大平町 / 正社員募集 / ひとなり紹介求人</span>
             </div>
-        </div>
-    </section>
-
-    <!-- 4 Reasons -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl md:text-4xl font-black text-blue-900 mb-12 flex items-center justify-center gap-3">
-                <span class="w-10 h-1 bg-orange-500 rounded-full"></span>
-                ヨコタが選ばれる4つの理由
-                <span class="w-10 h-1 bg-orange-500 rounded-full"></span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow group">
-                    <div class="h-44 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?auto=format&fit=crop&q=80&w=400" alt="個室寮" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="bg-orange-100 w-10 h-10 rounded-full flex items-center justify-center text-orange-600 mx-auto mb-4">
-                            <i data-lucide="home"></i>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 text-blue-900">家賃0円の個室寮</h3>
-                        <p class="text-slate-500 text-xs leading-relaxed">固定費を抑えてしっかり貯金。初期費用も会社が負担します。</p>
-                    </div>
-                </div>
-                <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow group">
-                    <div class="h-44 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=400" alt="引越し" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="bg-orange-100 w-10 h-10 rounded-full flex items-center justify-center text-orange-600 mx-auto mb-4">
-                            <i data-lucide="truck"></i>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 text-blue-900">赴任・引越し0円</h3>
-                        <p class="text-slate-500 text-xs leading-relaxed">遠方の方も安心。移動チケットや引越し費用を全面サポート。</p>
-                    </div>
-                </div>
-                <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow group">
-                    <div class="h-44 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=400" alt="給与" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="bg-orange-100 w-10 h-10 rounded-full flex items-center justify-center text-orange-600 mx-auto mb-4">
-                            <i data-lucide="coins"></i>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 text-blue-900">月収例28.8万円</h3>
-                        <p class="text-slate-500 text-xs leading-relaxed">未経験でも高水準。賞与・昇給ありの「正社員」採用です。</p>
-                    </div>
-                </div>
-                <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow group">
-                    <div class="h-44 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400" alt="教育" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="bg-orange-100 w-10 h-10 rounded-full flex items-center justify-center text-orange-600 mx-auto mb-4">
-                            <i data-lucide="graduation-cap"></i>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 text-blue-900">一生モノの技術</h3>
-                        <p class="text-slate-500 text-xs leading-relaxed">独自のアカデミー制度で、未経験からプロへ育て上げます。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Compatibility Section -->
-    <section class="py-20 bg-blue-50">
-        <div class="container mx-auto px-4">
-            <div class="max-w-5xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl font-black text-blue-900 mb-6 italic">CHECK YOUR FIT</h2>
-                    <p class="text-slate-600 mb-8 font-bold">「正直、今の自分にできるかな…？」<br>そんな不安を抱えているあなたへ。</p>
-                    <div class="space-y-4">
-                        <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-orange-500 flex items-start gap-4">
-                            <i data-lucide="user-check" class="text-orange-500 mt-1"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-800">向いている人</h4>
-                                <ul class="text-xs text-slate-500 mt-1 space-y-1">
-                                    <li>・コツコツと丁寧な作業が得意な方</li>
-                                    <li>・今の不安定な生活から抜け出したい方</li>
-                                    <li>・栃木の地で腰を据えて働きたい方</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="bg-slate-200/50 p-5 rounded-xl flex items-start gap-4 opacity-70">
-                            <i data-lucide="alert-circle" class="text-slate-400 mt-1"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-500">向いていない人</h4>
-                                <ul class="text-xs text-slate-400 mt-1 space-y-1">
-                                    <li>・夜勤がどうしても体調的に無理な方</li>
-                                    <li>・ルールや手順を守るのが苦手な方</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=800" alt="働くスタッフ" class="rounded-3xl shadow-2xl">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Academy Section -->
-    <section class="py-20 bg-slate-900 text-white overflow-hidden relative">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-[120px]"></div>
-        </div>
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-2xl md:text-4xl font-black mb-12">
-                「ただの作業員」で<br class="md:hidden">一生終わらせない。
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl">
-                    <h4 class="text-orange-400 font-bold text-xl mb-4 italic">STEP 01</h4>
-                    <p class="font-bold mb-2">現場のプロになる</p>
-                    <p class="text-xs text-slate-400 leading-relaxed">まずはエンジンの組立工程をマスター。大手メーカー基準の技術を習得。</p>
-                </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl">
-                    <h4 class="text-orange-400 font-bold text-xl mb-4 italic">STEP 02</h4>
-                    <p class="font-bold mb-2">学びのサブスク</p>
-                    <p class="text-xs text-slate-400 leading-relaxed">Udemy動画でITや設計を学習。スマホで空き時間にスキルアップ。</p>
-                </div>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl">
-                    <h4 class="text-orange-400 font-bold text-xl mb-4 italic">STEP 03</h4>
-                    <p class="font-bold mb-2">社内転職でキャリアUP</p>
-                    <p class="text-xs text-slate-400 leading-relaxed">エンジニアや管理職へ。社内でのキャリアチェンジを応援。</p>
-                </div>
-            </div>
-            <div class="mt-12 inline-block bg-blue-800/50 px-6 py-3 rounded-full border border-blue-700">
-                <p class="text-sm font-bold flex items-center gap-2">
-                    <i data-lucide="heart" class="text-orange-500 w-4 h-4"></i>
-                    ユニークな手当も充実！【恋活手当】【家族おもいやり手当】
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recruitment Table -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl font-black text-center mb-12 text-blue-900 underline decoration-orange-500 decoration-4 underline-offset-8">募集要項</h2>
-            <div class="border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
-                <div class="grid grid-cols-1 md:grid-cols-4 border-b border-slate-100">
-                    <div class="md:col-span-1 bg-slate-50 p-6 font-bold text-blue-900 text-sm">雇用形態</div>
-                    <div class="md:col-span-3 p-6 text-sm font-bold">正社員</div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 border-b border-slate-100">
-                    <div class="md:col-span-1 bg-slate-50 p-6 font-bold text-blue-900 text-sm">給与</div>
-                    <div class="md:col-span-3 p-6 text-sm">
-                        <p class="font-bold text-lg text-slate-800">月給 232,000円 〜 288,816円</p>
-                        <p class="text-xs text-slate-400 mt-1">※想定年収 約383万円 / 昇給年1回・賞与年2回</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 border-b border-slate-100">
-                    <div class="md:col-span-1 bg-slate-50 p-6 font-bold text-blue-900 text-sm">勤務地</div>
-                    <div class="md:col-span-3 p-6 text-sm font-bold">
-                        栃木県栃木市大平町伯仲 (大手メーカー内)
-                        <p class="text-xs font-normal text-slate-400 mt-1">マイカー通勤可・交通費全額支給</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 border-b border-slate-100">
-                    <div class="md:col-span-1 bg-slate-50 p-6 font-bold text-blue-900 text-sm">勤務時間</div>
-                    <div class="md:col-span-3 p-6 text-sm">
-                        <p class="font-bold">2交代制 (5日ごと)</p>
-                        <p class="text-xs text-slate-500">①8:15〜17:00 / ②20:30〜翌5:15</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 border-b border-slate-100">
-                    <div class="md:col-span-1 bg-slate-50 p-6 font-bold text-blue-900 text-sm">休日休暇</div>
-                    <div class="md:col-span-3 p-6 text-sm">
-                        <p class="font-bold">土日休み / 年間休日120日</p>
-                        <p class="text-xs text-slate-500">GW、夏季、年末年始、有給、記念日休暇</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-4">
-                    <div class="md:col-span-1 bg-slate-50 p-6 font-bold text-blue-900 text-sm">福利厚生</div>
-                    <div class="md:col-span-3 p-6 text-sm flex flex-wrap gap-x-4 gap-y-2">
-                        <span class="text-blue-700 font-bold underline decoration-blue-200">完全個室寮無料</span>
-                        <span>社会保険完備</span>
-                        <span>退職金制度</span>
-                        <span>制服貸与</span>
-                        <span class="text-orange-600 font-bold">恋活手当</span>
-                        <span>引越し費用サポート</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="py-20 bg-slate-50">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-2xl font-black text-center mb-12 text-blue-900">よくある質問</h2>
-            <div class="space-y-4">
-                <details class="bg-white rounded-xl shadow-sm border border-slate-200 group">
-                    <summary class="p-6 font-bold cursor-pointer flex justify-between items-center list-none text-sm md:text-base">
-                        <span>Q. 本当に未経験でも大丈夫ですか？</span>
-                        <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform"></i>
-                    </summary>
-                    <div class="p-6 pt-0 text-sm text-slate-600 border-t border-slate-100">
-                        はい、全く問題ありません！前職がアパレル、飲食、販売など、異業種からのスタートが8割以上です。専任の担当者が現場での定着をしっかりフォローします。
-                    </div>
-                </details>
-                <details class="bg-white rounded-xl shadow-sm border border-slate-200 group">
-                    <summary class="p-6 font-bold cursor-pointer flex justify-between items-center list-none text-sm md:text-base">
-                        <span>Q. 寮はどんな感じですか？</span>
-                        <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform"></i>
-                    </summary>
-                    <div class="p-6 pt-0 text-sm text-slate-600 border-t border-slate-100">
-                        プライバシーが守られた完全個室寮をご用意しています。家賃は無料（規定あり）ですので、生活費を抑えてしっかり貯金したい方に最適です。
-                    </div>
-                </details>
-                <details class="bg-white rounded-xl shadow-sm border border-slate-200 group">
-                    <summary class="p-6 font-bold cursor-pointer flex justify-between items-center list-none text-sm md:text-base">
-                        <span>Q. 選考はどのくらいの時間がかかりますか？</span>
-                        <i data-lucide="chevron-down" class="group-open:rotate-180 transition-transform"></i>
-                    </summary>
-                    <div class="p-6 pt-0 text-sm text-slate-600 border-t border-slate-100">
-                        スピード選考を心がけています。平日の応募なら30分以内にご連絡し、合否は面接の翌日までにお伝えしています。
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section id="apply" class="py-24 bg-blue-950 text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 opacity-10">
-            <i data-lucide="truck" class="w-96 h-96"></i>
-        </div>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl md:text-6xl font-black mb-8 leading-tight">
-                栃木で、最高の安定を。<br>
-                ここから新しい人生を。
-            </h2>
-            <p class="text-lg text-blue-200 mb-12 max-w-2xl mx-auto italic font-medium">
-                「とりあえず話を聞きたい」でもOK。あなたの「やってみたい」を全力で応援します。
+            <h1 className="text-4xl md:text-7xl font-black mb-6 leading-tight">
+              「自分には無理」を<br/>
+              <span className="text-orange-400">「ここならできる」</span>に。
+            </h1>
+            <p className="text-lg md:text-xl text-blue-50 mb-10 leading-relaxed">
+              ひとなり × ヨコタエンタープライズが強力タッグ。<br/>
+              家賃無料の個室寮、引越し支援、手厚いフォロー体制で<br className="hidden md:block" />
+              あなたの人生の再スタートを、プロが徹底サポートします。
             </p>
-            
-            <div class="max-w-xl mx-auto space-y-4">
-                <a href="tel:01209766631" class="block w-full bg-orange-500 hover:bg-orange-600 text-white py-6 rounded-2xl text-2xl font-black shadow-2xl transition transform hover:scale-105">
-                    <span class="text-xs font-normal block mb-1">お電話でのご応募はこちら（平日9時〜18時）</span>
-                    <div class="flex items-center justify-center gap-2">
-                        <i data-lucide="phone"></i> 0120-976-6631
-                    </div>
-                </a>
-                <button class="block w-full bg-white text-blue-900 py-6 rounded-2xl text-2xl font-black shadow-xl hover:bg-slate-100 transition">
-                    Webから1分でエントリー
-                </button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="#apply" className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-5 rounded-xl font-bold shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center">
+                まずは詳しい内容をチェック <ChevronRight className="ml-1" />
+              </a>
             </div>
-            <p class="mt-8 text-blue-400 text-xs tracking-widest uppercase">Yokota Enterprise Co., Ltd.</p>
+            <p className="mt-6 text-sm text-blue-200">※スマホで簡単応募！専門スタッフが30分以内にご連絡します</p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Footer -->
-    <footer class="py-12 bg-slate-900 text-slate-500 text-center border-t border-slate-800">
-        <div class="container mx-auto px-4 text-xs">
-            <p class="mb-2">株式会社ヨコタエンタープライズ</p>
-            <p class="mb-8">栃木県栃木市大平町伯仲 / トラックエンジン組立・正社員採用係</p>
-            <p class="opacity-50">© Yokota Enterprise Co., Ltd. ALL RIGHTS RESERVED.</p>
+      {/* 4 Reasons */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl md:text-4xl font-black text-blue-900 mb-4 tracking-tighter">ひとなり × ヨコタが選ばれる理由</h2>
+            <div className="w-16 h-1 bg-orange-500 mx-auto"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((b, i) => (
+              <div key={i} className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-shadow">
+                <div className="h-40 overflow-hidden">
+                  <img src={b.img} alt={b.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2 text-blue-900">{b.title}</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed">{b.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-    </footer>
+      </section>
 
-    <!-- Mobile Sticky CTA -->
-    <div id="sticky-cta" class="fixed bottom-0 w-full p-4 md:hidden z-50 sticky-cta transform translate-y-full">
-        <div class="flex gap-2">
-            <a href="tel:01209766631" class="flex-1 bg-white border-2 border-orange-600 text-orange-600 py-4 rounded-xl text-center font-black text-xs shadow-2xl">
-                電話相談
-            </a>
-            <a href="#apply" class="flex-[3] bg-orange-600 text-white py-4 rounded-xl text-center font-black shadow-2xl text-xs">
-                今すぐWeb応募する
-            </a>
+      {/* Compatibility Check */}
+      <section className="py-20 bg-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12 items-center">
+              <div className="lg:w-1/2">
+                <h2 className="text-3xl font-black text-blue-900 mb-6 tracking-tight">
+                  ひとなりスタッフが、<br className="md:hidden" />あなたの不安に寄り添います。
+                </h2>
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded-xl shadow-sm border-l-4 border-orange-500">
+                    <p className="text-sm text-slate-600 italic">「転職活動って、どこから始めればいいかわからない…」</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-sm border-l-4 border-orange-500">
+                    <p className="text-sm text-slate-600 italic">「今より良い環境で働けるか心配。本当のところはどうなの？」</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-sm border-l-4 border-orange-500">
+                    <p className="text-sm text-slate-600 italic">「ひとりで悩むのはもう疲れた。味方がほしい。」</p>
+                  </div>
+                </div>
+                <div className="mt-8">
+                  <p className="text-blue-900 font-bold text-lg">
+                    「ひとなり」は、あなたの転職の味方。<br/>
+                    ヨコタエンタープライズの魅力を、<br/>
+                    第三者の視点からも丁寧にお伝えします。
+                  </p>
+                </div>
+              </div>
+              <div className="lg:w-1/2 bg-white p-8 rounded-3xl shadow-xl border-t-8 border-orange-500">
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-blue-800">
+                  <UserCheck className="text-orange-500" /> 向いているのはこんな方
+                </h3>
+                <div className="grid grid-cols-1 gap-4">
+                  {suitability.pro.map((item, i) => (
+                    <div key={i} className="flex gap-4 items-start pb-4 border-b border-slate-50 last:border-0">
+                      <div className="bg-orange-100 text-orange-600 px-2 py-1 rounded text-[10px] font-bold mt-1">Check</div>
+                      <div>
+                        <h4 className="font-bold text-sm text-slate-800">{item.title}</h4>
+                        <p className="text-xs text-slate-500">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      {/* Academy & Future */}
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-2xl md:text-4xl font-black text-blue-900 mb-6 tracking-tighter">「ただの作業員」で終わらせない。</h2>
+            <p className="text-slate-600 text-sm md:text-base">
+              ヨコタ独自の教育制度「ヨコタアカデミー」で、<br className="md:hidden" />あなたの未来をサポートします。
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-slate-50 p-8 rounded-2xl text-center">
+              <div className="bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold italic shadow-lg">01</div>
+              <h4 className="font-bold mb-3">エンジンのプロへ</h4>
+              <p className="text-xs text-slate-500">工具の使い方から検査のコツまで、現場のプロがマンツーマンで指導。</p>
+            </div>
+            <div className="bg-slate-50 p-8 rounded-2xl text-center">
+              <div className="bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold italic shadow-lg">02</div>
+              <h4 className="font-bold mb-3">学びのサブスク</h4>
+              <p className="text-xs text-slate-500">Udemy動画でITや設計を学習。スマホで空き時間にスキルアップ可能。</p>
+            </div>
+            <div className="bg-slate-50 p-8 rounded-2xl text-center">
+              <div className="bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold italic shadow-lg">03</div>
+              <h4 className="font-bold mb-3">社内転職制度</h4>
+              <p className="text-xs text-slate-500">現場経験を活かして、エンジニアや管理職へ。社内でのキャリアチェンジを応援。</p>
+            </div>
+          </div>
+
+          <div className="bg-blue-900 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-2/3">
+                <h3 className="text-2xl font-bold mb-4">ユニークな福利厚生も充実！</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="text-orange-400" size={18} />
+                    <span className="text-sm font-bold">恋活手当</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="text-orange-400" size={18} />
+                    <span className="text-sm font-bold">家族おもいやり手当</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="text-orange-400" size={18} />
+                    <span className="text-sm font-bold">記念日休暇</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="text-orange-400" size={18} />
+                    <span className="text-sm font-bold">食堂完備</span>
+                  </div>
+                </div>
+              </div>
+              <div className="md:w-1/3">
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
+                  <p className="text-xs text-blue-200 mb-2 underline">社長からのメッセージ</p>
+                  <p className="text-sm italic leading-relaxed">
+                    「仕事も、遊びも、恋愛も。あなたの人生が豊かになることを、会社は本気で願っています。」
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recruitment Details Table */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl font-black text-center mb-12 text-blue-900 tracking-tighter">募集要項</h2>
+          <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+            {[
+              { label: "雇用形態", value: "正社員" },
+              { label: "給与", value: "月給 232,000円 〜 288,816円 (想定年収 約383万円)", note: "昇給年1回・賞与年2回あり" },
+              { label: "勤務地", value: "栃木県栃木市大平町伯仲 (大手メーカー内配属)", note: "マイカー通勤OK・交通費全額支給" },
+              { label: "勤務時間", value: "2交代制 (5日ごと) ①8:15〜17:00 ②20:30〜翌5:15", note: "一部4勤2休の変則勤務あり" },
+              { label: "休日休暇", value: "土日休み (GW・夏季・年末年始・有給・記念日休暇)", note: "年間休日120日" },
+              { label: "仕事内容", value: "トラックに搭載するエンジンの組立作業", note: "工具を使用した組立、部品取付、完成品の検査など" },
+              { label: "福利厚生", value: "社会保険完備・退職金制度・個室寮(無料)・引越し費用サポート・恋活手当など" }
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col md:flex-row border-b border-slate-100 last:border-0">
+                <div className="md:w-1/4 bg-slate-50 md:bg-white p-4 md:p-6 font-bold text-blue-900 text-sm md:border-r border-slate-100">
+                  {item.label}
+                </div>
+                <div className="md:w-3/4 p-4 md:p-6 text-sm">
+                  <p className="font-bold text-slate-800">{item.value}</p>
+                  {item.note && <p className="text-xs text-slate-400 mt-1">{item.note}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h2 className="text-2xl font-black text-center mb-12 text-blue-900 flex items-center justify-center gap-2">
+            <HelpCircle className="text-orange-500" /> よくある質問
+          </h2>
+          <div className="space-y-6">
+            {[
+              { q: "「ひとなり」から応募するメリットは何ですか？", a: "求職者の立場に立った専門スタッフが、条件の確認や面接対策、入社までの不安解消を丁寧にサポートします。ヨコタエンタープライズとの連携もスムーズです。" },
+              { q: "寮はどんな部屋ですか？", a: "プライバシーが確保された完全個室寮です。もちろん寮費は無料（規定あり）で、初期費用を抑えて生活をスタートできます。" },
+              { q: "本当に未経験でも正社員になれますか？", a: "もちろんです！飲食店やコンビニなど、全くの異業種からスタートした先輩が多数活躍しています。" },
+              { q: "選考のスピード感は？", a: "ひとなりスタッフが迅速に調整します。平日の応募なら30分以内にご連絡、合否は面接の翌日までにお伝えしています。" }
+            ].map((faq, i) => (
+              <div key={i} className="border-b border-slate-100 pb-6">
+                <h4 className="font-bold text-slate-800 mb-2 flex items-start gap-2 text-sm md:text-base">
+                  <span className="text-orange-500 font-black">Q.</span>
+                  {faq.q}
+                </h4>
+                <p className="text-xs md:text-sm text-slate-600 leading-relaxed pl-6">
+                  {faq.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section id="apply" className="py-20 bg-blue-900 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-10">
+          <Truck size={300} />
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter">
+            栃木で、最高の「安定」を。<br/>
+            ひとなりが、最後まで伴走します。
+          </h2>
+          <p className="text-lg text-blue-200 mb-12 max-w-2xl mx-auto">
+            まずは30秒でエントリー！ひとなりスタッフがあなたのキャリアの「次の一歩」を全力で応援します。
+          </p>
+          
+          <div className="max-w-xl mx-auto grid grid-cols-1 gap-4">
+            <a href="tel:01209766631" className="bg-orange-500 hover:bg-orange-600 text-white py-6 rounded-2xl text-2xl font-black shadow-2xl transition transform hover:scale-105 flex flex-col items-center justify-center">
+               <span className="text-xs font-normal mb-1">お電話で今すぐ（ひとなり担当直通：平日9:00〜18:00）</span>
+               <div className="flex items-center gap-2"><Phone /> 0120-976-6631</div>
+            </a>
+            <button className="bg-white text-blue-900 py-6 rounded-2xl text-2xl font-black shadow-xl hover:bg-slate-100 transition">
+               Webから1分で応募する
+            </button>
+          </div>
+          <p className="mt-8 text-blue-400 text-[10px] tracking-widest uppercase">ひとなり × Yokota Enterprise Co., Ltd.</p>
+        </div>
+      </section>
+
+      {/* Mobile Footer Sticky */}
+      <div className="fixed bottom-0 w-full p-4 md:hidden z-50">
+        <div className="flex gap-2">
+          <a href="tel:01209766631" className="flex-1 bg-white border-2 border-orange-600 text-orange-600 py-4 rounded-xl text-center font-black text-sm shadow-2xl">
+            電話
+          </a>
+          <a href="#apply" className="flex-[3] bg-orange-600 text-white py-4 rounded-xl text-center font-black shadow-2xl text-sm">
+            今すぐエントリー
+          </a>
+        </div>
+      </div>
+
+      <footer className="py-12 bg-slate-900 text-slate-500 text-center border-t border-slate-800">
+        <div className="container mx-auto px-4">
+          <p className="text-sm mb-2">ひとなり｜現場、職人、専門職特化の転職エージェント</p>
+          <p className="text-xs mb-2">株式会社スタイル・エッジ × 株式会社ヨコタエンタープライズ</p>
+          <p className="text-[10px] opacity-50 uppercase tracking-widest mt-4">© Hitonari / Yokota Enterprise. ALL RIGHTS RESERVED.</p>
+        </div>
+      </footer>
     </div>
+  );
+};
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            const stickyCta = document.getElementById('sticky-cta');
-            
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-white', 'shadow-md', 'py-3');
-                nav.classList.remove('bg-transparent', 'py-5');
-                stickyCta.classList.remove('translate-y-full');
-            } else {
-                nav.classList.add('bg-transparent', 'py-5');
-                nav.classList.remove('bg-white', 'shadow-md', 'py-3');
-                stickyCta.classList.add('translate-y-full');
-            }
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+export default App;
